@@ -6,7 +6,7 @@ To get started with TDD, see the `README.md` file in your
 `ruby/binary-search-tree` directory.
 =end
 class Bst
-  attr_reader :data, :left, :right
+  attr_reader :data, :left, :right, :all_data
 
   def initialize(head)
     @data = head
@@ -25,10 +25,15 @@ class Bst
   end
 
   def each
-    all_data = [@data]
-    all_data << @left.data if @left
-    all_data << @right.data if @right
     all_data.sort.each { |num| yield num }
+  end
+
+  def all_data
+    arr ||= []
+    arr << @data
+    arr << @left.all_data if @left
+    arr << @right.all_data if @right
+    arr.flatten
   end
 
 end
