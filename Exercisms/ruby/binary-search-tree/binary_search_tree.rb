@@ -15,7 +15,13 @@ class Bst
   end
 
   def insert(num)
-    @left = Bst.new(num)
+    if num <= @data
+      @left = Bst.new(num) and return if !@left
+      @left.insert(num)
+    elsif num > @data
+      @right = Bst.new(num) and return if !@right
+      @right.insert(num)
+    end
   end
 
 end
