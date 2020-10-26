@@ -24,4 +24,11 @@ class Bst
     end
   end
 
+  def each
+    all_data = [@data]
+    all_data << @left.data if @left
+    all_data << @right.data if @right
+    all_data.sort.each { |num| yield num }
+  end
+
 end
