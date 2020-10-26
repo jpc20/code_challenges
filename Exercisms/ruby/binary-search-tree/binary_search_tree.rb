@@ -25,6 +25,7 @@ class Bst
   end
 
   def each
+    return to_enum(:each) unless block_given?
     all_data.sort.each { |num| yield num }
   end
 
