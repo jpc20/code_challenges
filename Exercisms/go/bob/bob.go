@@ -1,28 +1,28 @@
 package bob
 
-import "unicode"
+import "strings"
 
-func IsUpper(str string) bool {
-	lettersPresent := false
-	for _, ch := range str {
-		if unicode.IsLetter(ch) {
-			lettersPresent = true
-		}
-		if !unicode.IsUpper(ch) && unicode.IsLetter(ch) {
-			return false
+func hasAlpha(str string) bool {
+	lower := strings.ToLower(str)
+	for _, ch := range lower {
+		if ch <= 'z' && ch >= 'a' {
+			return true
 		}
 	}
-	return lettersPresent
+	return false
 }
 
 func Hey(remark string) string {
 	response := ""
-	if remark[len(remark) - 1] == '?' && IsUpper(remark) {
+	remark = strings.Trim(remark, " \t\n\r")
+	if strings.HasSuffix(remark, "?") && hasAlpha(remark) && strings.ToUpper(remark) == remark {
 		response = "Calm down, I know what I'm doing!"
-	} else if remark[len(remark) - 1] == '?' {
+	} else if strings.HasSuffix(remark, "?") {
 		response = "Sure."
-	} else if IsUpper(remark) {
+	} else if strings.ToUpper(remark) == remark && hasAlpha(remark) {
 		response = "Whoa, chill out!"
+	} else if remark == "" {
+		response = "Fine. Be that way!"
 	} else {
 		response = "Whatever."
 	}
