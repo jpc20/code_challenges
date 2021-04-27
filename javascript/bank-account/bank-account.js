@@ -26,11 +26,15 @@ export class BankAccount {
   }
 
   deposit(dollars) {
-    this._balance += dollars;
+    if (this.openStatus === false || dollars < 0) {
+      throw new ValueError();
+    } else {
+      this._balance += dollars;
+    }
   }
 
   withdraw(dollars) {
-    if (this.openStatus === false || this._balance < dollars) {
+    if (this.openStatus === false || this._balance < dollars || dollars < 0) {
       throw new ValueError();
     } else {
       this._balance -= dollars;
