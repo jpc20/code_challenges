@@ -6,14 +6,16 @@
 export class BankAccount {
   
   constructor() {
+    this.openStatus = false;
   }
 
   open() {
+    this.openStatus = true;
     this._balance = 0;
   }
 
   close() {
-    throw new Error('Remove this statement and implement this function');
+    this.openStatus = false;
   }
 
   deposit(dollars) {
@@ -25,7 +27,11 @@ export class BankAccount {
   }
 
   get balance() {
-    return this._balance;
+    if (this.openStatus === false) {
+      throw new ValueError;
+    } else {
+      return this._balance;
+    }
   }
 }
 
