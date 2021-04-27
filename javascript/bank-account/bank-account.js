@@ -30,10 +30,10 @@ export class BankAccount {
   }
 
   withdraw(dollars) {
-    if (this.openStatus === false) {
+    if (this.openStatus === false || this._balance < dollars) {
       throw new ValueError();
     } else {
-      if (this._balance >= dollars) this._balance -= dollars;
+      this._balance -= dollars;
     }
   }
 

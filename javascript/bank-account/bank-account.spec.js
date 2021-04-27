@@ -79,7 +79,7 @@ describe('Bank Account', () => {
     }).toThrow(ValueError);
   });
 
-  xtest('reopened account does not retain balance', () => {
+  test('reopened account does not retain balance', () => {
     const account = new BankAccount();
     account.open();
     account.deposit(50);
@@ -88,7 +88,7 @@ describe('Bank Account', () => {
     expect(account.balance).toEqual(0);
   });
 
-  xtest('cannot withdraw more than deposited', () => {
+  test('cannot withdraw more than deposited', () => {
     const account = new BankAccount();
     account.open();
     account.deposit(25);
