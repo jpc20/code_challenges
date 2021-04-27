@@ -4,12 +4,12 @@
 //
 
 export class BankAccount {
+  
   constructor() {
-    throw new Error('Remove this statement and implement this function');
   }
 
   open() {
-    throw new Error('Remove this statement and implement this function');
+    this._balance = 0;
   }
 
   close() {
@@ -25,7 +25,7 @@ export class BankAccount {
   }
 
   get balance() {
-    throw new Error('Remove this statement and implement this function');
+    return this._balance;
   }
 }
 
