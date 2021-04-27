@@ -4,7 +4,6 @@
 //
 
 export class BankAccount {
-  
   constructor() {
     this.openStatus = false;
   }
@@ -15,7 +14,11 @@ export class BankAccount {
   }
 
   close() {
-    this.openStatus = false;
+    if (this.openStatus === false) {
+      throw new ValueError();
+    } else {
+      this.openStatus = false;
+    }
   }
 
   deposit(dollars) {
@@ -23,12 +26,16 @@ export class BankAccount {
   }
 
   withdraw(dollars) {
-    if (this._balance >= dollars) this._balance -= dollars;
+    if (this.openStatus === false) {
+      throw new ValueError();
+    } else {
+      if (this._balance >= dollars) this._balance -= dollars;
+    }
   }
 
   get balance() {
     if (this.openStatus === false) {
-      throw new ValueError;
+      throw new ValueError();
     } else {
       return this._balance;
     }
@@ -37,6 +44,6 @@ export class BankAccount {
 
 export class ValueError extends Error {
   constructor() {
-    super('Bank account error');
+    super("Bank account error");
   }
 }
