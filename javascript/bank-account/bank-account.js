@@ -20,8 +20,8 @@ export class BankAccount {
     this._balance += dollars;
   }
 
-  withdraw() {
-    throw new Error('Remove this statement and implement this function');
+  withdraw(dollars) {
+    if (this._balance >= dollars) this._balance -= dollars;
   }
 
   get balance() {
