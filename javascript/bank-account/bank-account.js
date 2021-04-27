@@ -9,8 +9,12 @@ export class BankAccount {
   }
 
   open() {
-    this.openStatus = true;
-    this._balance = 0;
+    if (this.openStatus === true) {
+      throw new ValueError();
+    } else {
+      this.openStatus = true;
+      this._balance = 0;
+    }
   }
 
   close() {
