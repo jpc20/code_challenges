@@ -4,12 +4,20 @@
 //
 
 export class Matrix {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  constructor(input) {
+    this.input = input;
   }
 
   get rows() {
-    throw new Error('Remove this statement and implement this function');
+    let allRows = [];
+    this.input.split('\n').forEach(nums => {
+      let oneRow = [];
+      nums.split(' ').forEach(num => {
+        oneRow.push(parseInt(num))
+      })
+      allRows.push(oneRow)
+    });
+    return allRows;
   }
 
   get columns() {
