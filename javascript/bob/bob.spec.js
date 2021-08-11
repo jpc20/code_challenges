@@ -6,7 +6,7 @@ describe('Bob', () => {
     expect(result).toEqual('Whatever.');
   });
 
-  xtest('shouting', () => {
+  test('shouting', () => {
     const result = hey('WATCH OUT!');
     expect(result).toEqual('Whoa, chill out!');
   });
