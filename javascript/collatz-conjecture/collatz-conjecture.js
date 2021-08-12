@@ -1,5 +1,8 @@
 export const steps = (n) => {
-  const count = 0;
-
+  var count = 0;
+  while (n % 2 === 0) {
+    n = n / 2;
+    count++;
+  }
   return count;
 };
